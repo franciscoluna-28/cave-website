@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/layout/Navbar";
+import MobileSidebar from "@/components/layout/MobileSidebar";
 import Image from "next/image";
 import BG from "../../public/bg.png";
 import { Button } from "@nextui-org/react";
-import MobileSidebar from "@/components/layout/MobileSidebar";
 
 const inter = Inter({ subsets: ["latin"] });
 
