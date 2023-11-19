@@ -7,15 +7,26 @@ import { MdMenu } from "react-icons/md";
 import Link from "next/link";
 import { IoMdClose } from "react-icons/io";
 
-// Navbar for mobile made with framer motion and TailwindCSS
+/**
+ * MobileSidebar component provides a mobile-friendly sidebar navigation
+ * with a toggle button for opening and closing the sidebar.
+ * Utilizes framer-motion for animations and TailwindCSS for styling.
+ * @returns {JSX.Element} - JSX element representing the MobileSidebar.
+ */
 export default function MobileSidebar() {
+  // State to manage the visibility of the sidebar
   const [isAsideVisible, setAsideVisible] = useState<boolean>(false);
+
+  /**
+   * Toggles the visibility of the sidebar.
+   */
   const handleAside = () => {
     setAsideVisible((prev) => !prev);
   };
 
   return (
     <>
+      {/* Button to open the sidebar */}
       <button
         aria-label="Open Sidebar"
         onClick={handleAside}
@@ -23,6 +34,8 @@ export default function MobileSidebar() {
       >
         <MdMenu className="text-4xl text-black p-2 bg-mainOrange rounded-full" />
       </button>
+
+      {/* AnimatePresence for handling animations */}
       <AnimatePresence>
         {isAsideVisible && (
           <motion.aside
@@ -33,7 +46,10 @@ export default function MobileSidebar() {
             className="fixed top-0 left-0 h-screen w-1/2 bg-mainOrange hover:border-blue-500 to-mainDarkBlue z-50"
           >
             <nav className="relative">
+              {/* Sidebar title */}
               <h5 className={`text-black font-medium w-1/2 p-4`}>CAVE</h5>
+
+              {/* Sidebar navigation links */}
               <ul className="gap-4 flex flex-col mt-4">
                 <Link
                   className="w-full hover:bg-mainDarkBlue duration-200 group p-2 px-4 text-black font-medium text-sm"
@@ -42,27 +58,10 @@ export default function MobileSidebar() {
                   Link
                 </Link>
 
-                <Link
-                  className="w-full hover:bg-mainDarkBlue duration-200 group p-2 px-4 text-black font-medium text-sm"
-                  href="/ss"
-                >
-                  Link
-                </Link>
-
-                <Link
-                  className="w-full hover:bg-mainDarkBlue duration-200 group p-2 px-4 text-black font-medium text-sm"
-                  href="/ss"
-                >
-                  Link
-                </Link>
-
-                <Link
-                  className="w-full duration-200 group p-2 px-4 text-black font-medium text-sm"
-                  href="/ss"
-                >
-                  Link
-                </Link>
+                {/* Additional Link elements can be added as needed */}
               </ul>
+
+              {/* Button to close the sidebar */}
               <button
                 className="absolute top-0 right-0 p-4"
                 onClick={handleAside}
